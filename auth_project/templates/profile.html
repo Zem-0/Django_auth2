@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+
+    <style>
+      /* General Styling */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+      }
+
+      .profile-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-header h1 {
+        font-size: 2rem;
+        color: #007bff;
+      }
+
+      .profile-header p {
+        font-size: 1.2rem;
+        color: #6c757d;
+      }
+
+      .profile-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .profile-info h3 {
+        font-size: 1.5rem;
+        color: #343a40;
+        margin-bottom: 10px;
+      }
+
+      .profile-info p {
+        font-size: 1.1rem;
+        color: #495057;
+      }
+
+      .profile-actions .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        margin: 5px;
+        display: inline-block;
+        transition: background-color 0.3s;
+      }
+
+      .profile-actions .btn:hover {
+        background-color: #0056b3;
+      }
+
+      .profile-actions .logout {
+        background-color: #dc3545;
+      }
+
+      .profile-actions .logout:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile-container">
+      <div class="profile-header">
+        <h1>Welcome, {{ user.username }}!</h1>
+        <p>Your Profile Details</p>
+      </div>
+
+      <div class="profile-details">
+        <div class="profile-info">
+          <h3>Name: {{ user.first_name }} {{ user.last_name }}</h3>
+          <p>Email: {{ user.email }}</p>
+          <p>Username: {{ user.username }}</p>
+          <p>Last Login: {{ last_login|date:"D, d M Y H:i:s" }}</p>
+        </div>
+
+        <div class="profile-actions">
+          <a href="{% url 'change_password' %}" class="btn">Change Password</a>
+          <a href="{% url 'logout' %}" class="btn logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
